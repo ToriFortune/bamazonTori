@@ -7,22 +7,7 @@ This app will function as an on line store. Customer orders are entered and the 
 -	Item ID
 -	Item prices
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![customer-img-1](https://user-images.githubusercontent.com/46722789/57564781-9afbb380-7377-11e9-9af6-61aeb82b4300.jpg)
 
 
 
