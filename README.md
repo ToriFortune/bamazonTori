@@ -8,6 +8,24 @@ This app will function as an on line store. Customer orders are entered and the 
 -	Item prices
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- 
 
 
