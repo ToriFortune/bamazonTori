@@ -1,0 +1,20 @@
+{
+  "name": "bamazonTori",
+  "version": "1.0.0",
+  "description": "## Overview BAMAZON\t This app will function as an on line store. Customer orders are entered and the online inventory is depleted as orders are completed. Items for sale will be displayed to include the following; -\tItem name -\tItem ID -\tItem prices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToriFortune/bamazonTori.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ToriFortune/bamazonTori/issues"
+  },
+  "homepage": "https://github.com/ToriFortune/bamazonTori#readme"
+}
