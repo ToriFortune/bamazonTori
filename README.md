@@ -11,6 +11,10 @@ This app will function as an on line store. Customer orders are entered and the 
 
 ![sqldbproducts](https://user-images.githubusercontent.com/46722789/57576971-6a2c8480-7432-11e9-807b-59bac0deedd0.jpg)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 183e8df1c0d18895e8241ce676a346dde752c959
 
 
 <!-- 
