@@ -34,7 +34,7 @@ function showAllProducts(){
 }
 var Table = require('cli-table');
  
-// instantiate
+
 var table = new Table({
     head: ["ID", "Product name", "Department", "Price", "In Stock"]
   , colWidths: [5, 20, 20, 10, 15]
@@ -74,7 +74,7 @@ var purchases = function() {
               .prompt({
                type: "input", 
                name: "Amount",
-                                message: "How many would you like today?"
+               message: "How many would you like today?"
               })
               .then(function(response2) {
                 var quantity = response2.quantity;
@@ -85,7 +85,7 @@ var purchases = function() {
                       " of that product :("
                   );
                   
-                  shopping();
+                  purchases();
                 }
   
                 else {
