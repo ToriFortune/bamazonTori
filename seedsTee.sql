@@ -11,6 +11,7 @@ VALUES ("pencil", "School Supplies", 1.50, 100),
   ("lunchbox", "School Supplies", 4.99, 100 ),
    ("sharpener", "School Supplies", 2.99, 100 ),
     ("gluestick", "School Supplies", 2.99, 100 ),
+     ("hand Sanitizer", "School Supplies", 3.99, 100 ),
 
 
 
