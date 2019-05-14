@@ -3,6 +3,12 @@ var inquirer = require ("inquirer");
 require('dotenv').config()
 
 
+var Table = require('cli-table');
+var table = new Table({
+    head: ["ID", "Product name", "Department", "Price", "In Stock"]
+  , colWidths: [10, 20, 20, 10, 15]
+});
+
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -15,6 +21,7 @@ connection.connect(function(err){
     if (err) throw err;
     console.log ("\nConnected as id " + connection.threadId);
     showAllProducts();
+
 });
 
 function showAllProducts(){
@@ -22,30 +29,26 @@ function showAllProducts(){
         if (err) throw err;
 
         res.forEach((value) => {
-            console.log("ID: " + value.item_id);
-            console.log("Name: " + value.product_name);
-            console.log("Department: " + value.department_name);
-            console.log("Price: " + value.price);
-            console.log("Stock: " + value.stock_quantity);
-            console.log("\n-------------------------\n")
+            var data = [
+                value.item_id,
+                value.product_name,
+                value.department_name,
+                value.price,
+                value.stock_quantity
+            ]
+            //add data rows to table
+            table.push(data);
         });
-        console.log(res);
+
+        //display table
+        console.log(table.toString());
+        console.log();
+
+        //begin inquirer
+        purchases();
     })
 }
-var Table = require('cli-table');
- 
 
-var table = new Table({
-    head: ["ID", "Product name", "Department", "Price", "In Stock"]
-  , colWidths: [5, 20, 20, 10, 15]
-});
-table.push(
-    ["First value", "Second value", "Third Value", "Fourth Value"]
-  , ["First value", "Second value", "Third Value", "Fourth Value"]
-);
- 
-console.log(table.toString());
-console.log()
 
 
 var purchases = function() {
@@ -57,7 +60,7 @@ var purchases = function() {
       })
       .then(function(response) {
         var selection = response.productpurchased;
-        connection.query("SELECT * FROM products WHERE Id=?", selection, function(
+        connection.query("SELECT * FROM products WHERE item_id=?", selection, function(
           err,
           res
         ) {
@@ -73,7 +76,7 @@ var purchases = function() {
             inquirer
               .prompt({
                type: "input", 
-               name: "Amount",
+               name: "quantity",
                message: "How many would you like today?"
               })
               .then(function(response2) {
@@ -95,10 +98,11 @@ var purchases = function() {
     
                     var newQuantity = res[0].stock_quantity - quantity;
                     connection.query(
-                      "UPDATE products SET stock_quantity = " +
-                        newQuantity +
-                        " WHERE id = " +
-                        res[0].id,
+                      "UPDATE products SET ? WHERE ?",
+                        [
+                            { stock_quantity: newQuantity },
+                            { item_id: res[0].item_id}
+                        ],
                       function(err, resUpdate) {
                         if (err) throw err;
                        
@@ -114,16 +118,3 @@ var purchases = function() {
           });
         });
     };
-    
-    showAllProducts();
-    
-              
-// create variable for shopping and call for inquirer 
-// function purchases(){
-//     const prompt =[
-//         type="input",
-//         message ="What would you like to buy",
-//         name = "product"
-// //     ]
-// // }
-// 
