@@ -103,16 +103,18 @@ var purchases = function() {
                             { stock_quantity: newQuantity },
                             { item_id: res[0].item_id}
                         ],
-                      function(err, resUpdate) {
+                      function(err) {
                         if (err) throw err;
-                       
-                        console.log("Your Order has been Processed");
-                        console.log("Thank you for Shopping at Bamazon!");
+                      //  resUpdate();
+                        console.log("Your order has been processed.");
+                        console.log("Thank you for Shopping at BamazonTee! We hope you would visit us again!");
                         ;
+                        // end connection
                         connection.end();
                       }
                     );
                   }
+                  // resUpdate();
                 });
             }
           });

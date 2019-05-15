@@ -2,7 +2,11 @@ require("dotenv").config();
 var mysql = require ("mysql");
 var inquirer = require ("inquirer");
 
-
+var Table = require('cli-table');
+var table = new Table({
+    head: ["ID", "Product name", "Department", "Price", "In Stock"]
+  , colWidths: [10, 20, 20, 10, 15]
+});
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -31,4 +35,36 @@ function showInventory(){
         });
     })
 }
-showInventory();
+showInventory();{
+    connection.query("SELECT * FROM products", function (err, res){
+        if (err) throw err;
+        res.forEach((value)=>{
+            var data= [ 
+                value.item_id,
+                value.product_name,
+                value.department_name,
+                value.price,
+                value.stock_quantity
+            ]
+            table.push(data);
+        });
+        console.log(table.toString());
+        console.log();
+
+    })
+}
+
+var itemsForSale = function(){
+    inquirer
+    .prompt({
+        message: "What is left in stock?"
+    })
+}
+itemsForSale();
+
+
+
+
+// show inventory should update when a purchase is made
+// table is still displaying double inventory
+
