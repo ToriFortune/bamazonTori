@@ -88,7 +88,7 @@ var purchases = function() {
                       " of that product :("
                   );
                   
-                //   purchases();
+                  purchases();
                 }
   
                 else {
