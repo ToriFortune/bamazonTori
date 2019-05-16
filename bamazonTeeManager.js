@@ -22,20 +22,18 @@ connection.connect(function(err){
 
 });
 function showInventory(){
-    connection.query("SELECT * FROM products", function(err,res){
-        if (err) throw err;
-        res.forEach(value => {
-            console.log("ID: " + value.item_id);
-            console.log("Name: " + value.product_name);
-            console.log("Department: " + value.department_name);
-            console.log("Price: " + value.price);
-            console.log("Stock: " + value.stock_quantity);
-            console.log("\n-------------------------\n")
+    // connection.query("SELECT * FROM products", function(err,res){
+    //     if (err) throw err;
+    //     res.forEach(value => {
+    //         console.log("ID: " + value.item_id);
+    //         console.log("Name: " + value.product_name);
+    //         console.log("Department: " + value.department_name);
+    //         console.log("Price: " + value.price);
+    //         console.log("Stock: " + value.stock_quantity);
+    //         console.log("\n-------------------------\n")
             
-        });
-    })
-}
-showInventory();{
+    //     });
+    // })
     connection.query("SELECT * FROM products", function (err, res){
         if (err) throw err;
         res.forEach((value)=>{
@@ -53,6 +51,9 @@ showInventory();{
 
     })
 }
+showInventory();
+   
+
 
 var itemsForSale = function(){
     inquirer
