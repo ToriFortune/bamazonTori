@@ -21,7 +21,7 @@ connection.connect(function(err){
     console.log ("Loading Inventory")
 
 });
-function showInventory(){
+function updateInventory(){
     // connection.query("SELECT * FROM products", function(err,res){
     //     if (err) throw err;
     //     res.forEach(value => {
@@ -48,24 +48,60 @@ function showInventory(){
         });
         console.log(table.toString());
         console.log();
-
+updateInventory();
     })
 }
-showInventory();
+updateInventory();
    
 
 
-var itemsForSale = function(){
+var updateInventory = function(){
     inquirer
     .prompt({
-        message: "What is left in stock?"
+        name: "action",
+        type:"list",
+        message:"What would you like to do today?",
+        choices: ["Restock Items", "Add new item/s to stock", "Remove item from stock"]
+    }).then(function(response){
+        switch(response.action){
+            case "Restock Items":
+                restockItems();
+                break;
+            case "Add new item/s":
+                addItems();
+                break;
+            case "Remove item from stock":
+                removeItems();
+                break;
+        }
     })
 }
-itemsForSale();
+function restockItems(){
+    inquirer.prompt([{
+        name: "item_id",
+        type:"input",
+        message:"What number item would you like to restock?",
+    },
+    {
+        name: "Amount",
+        type: "input",
+        message: "How many would you like to add?",
+    },
+    
+]).then(function(response){
+var amountAdded =response.amount;
+var itemId = response.item_id;
+restockInventory (itemId, amountAdded);
 
+})
+    
+};
+function restockInventory(item_id, amount){
+    console.log(item_id)
+connection.query("SELECT * FROM products WHERE item_id=?" + item_id, function (err, res){
+    if (err) console.log(err)
+});
+connection.query ("UPDATE products SET amount = amount +" + amountAdded + "WHERE item_id = ?" + item_id );
+displayInventory();
 
-
-
-// show inventory should update when a purchase is made
-// table is still displaying double inventory
-
+};
