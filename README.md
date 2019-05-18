@@ -23,3 +23,9 @@ This app will function as an on line store. Customer orders are entered and the 
 
 ![image](https://user-images.githubusercontent.com/46722789/57669710-b8c45500-75d1-11e9-9cb6-1905d90c2991.png)
 
+Technologies Used:
+- MySQL
+- NodeJS
+- JS
+- CLI Table
+- 
