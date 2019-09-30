@@ -28,4 +28,4 @@ Technologies Used:
 - NodeJS
 - JS
 - CLI Table
-- 
+
